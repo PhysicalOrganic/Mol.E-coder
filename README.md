@@ -1,10 +1,10 @@
-# SequenceScribe2.0
-SequenceScribe2.0 works to convert text into both octal and hexadecimal in the same way. It is a two part program that encodes text input into monomer code and then takes LC/MS data and converts masses back to the original text that was encoded.
+# Mol.E-Coder
+Mol.E-Coder works to convert text into both octal and hexadecimal in the same way. It is a two part program that encodes text input into monomer code and then takes LC/MS data and converts masses back to the original text that was encoded.
 
 Both octal and hexadecimal work in the same way and are separated into an encode and decode portion
 
-### HuffmanEncode Usage
-The first part of SequenceScribe2.0 is HuffmanEncode{Hex/Octal}.py. This program takes a Text Document as an input. The text input is then converted to binary code using a Huffman
+### Mol.E-Coder Usage
+The first part of Mol.E-Coder is Mol.E-Coder{Hex/Octal}.py. This program takes a Text Document as an input. The text input is then converted to binary code using a Huffman
 Algorithm. This algorithm works by created a binary tree of the characters in the text being encoded and assigns the letters to nodes based on the frequency of their occurance
 in the text. 
 
@@ -14,7 +14,7 @@ contains the symbols and their binary representation created by the Huffman algo
 The following is an example input and output for the hexadecimal version:
 
 ```bash
-run HuffmanEncodeHex.py TxtToBeEncoded.txt HuffmanCodes
+run Mol.E-CoderHex.py TxtToBeEncoded.txt HuffmanCodes
 ```
 
 
@@ -35,8 +35,8 @@ monomer_occurange: {'0': 8, '1': 11, '2': 7, '3': 9, '4': 10, '5': 4, '6': 8, '7
 split into 9's: ['1fbf74bbc', '74a4bdefe', '9a698293b', 'fdb009e7f', 'd164d5e9b', '0a6be14e9', 'fe5f6abcd', '231dc37f3', '4bec0df3c', '5851289b0', '2eb83f81d', 'd119fe0bc', '9a72eddd4', '6e89e4166', '231be0bec', '289f1b96e', 'cf3bdc943', '48d0c']
 ```
 
-### HuffmanDecode Usage
-The second part of SequenceScribe2.0 is HuffmanDecode{Hex/Octal}.py. This program takes in two inputs, the codes output by the Huffman algorithm that are correlated to characters in 
+### Mol.E-Decoder Usage
+The second part of Mol.E-Coder is Mol.E-Decoder{Hex/Octal}.py. This program takes in two inputs, the codes output by the Huffman algorithm that are correlated to characters in 
 the encoded text "CharactersToHuffmanCodes.xlsx" and the LC/MS masses entered into our template "DataTemplate.xlsx". 
 
 The program first takes in the masses entered into the template and matches the difference between the parent mass and the subsequent mass to a monomer. 
@@ -46,7 +46,7 @@ is then matched to the characters in the CharactersToHuffmanCodes.xlsx and the r
 The following is an example input and output for the hexadecimal version:
 
 ```bash
-run HuffmanDecode.py CharactersToHuffmanCodes.xlsx ExampleDataTemplate.xlsx 
+run Mol.E-DecoderHex.py CharactersToHuffmanCodes.xlsx ExampleDataTemplate.xlsx 
 ```
 
 ```python
