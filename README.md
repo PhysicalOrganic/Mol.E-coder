@@ -11,12 +11,12 @@ in the text.
 To run this program the program takes a single input: a text document containing the text to be encoded.
 
 The following is an example input and output for the hexadecimal version:
-
+INPUT
 ```bash
 run Mol.E-CoderHex.py TxtToBeEncoded.txt
 ```
 
-
+OUTPUT
 ```python
 
 If one scheme of happiness fails, human nature turns to another; if the first calculation is wrong, we make a second better: we find comfort somewhere.
@@ -45,11 +45,11 @@ These monomers that were previously assigned to a hexadecimal symbol by the rese
 is then matched to the characters in the CharactersToHuffmanCodes.xlsx and the resulting decoded text is output.
 
 The following is an example input and output for the hexadecimal version:
-
+INPUT
 ```bash
 run Mol.E-DecoderHex.py CharactersToHuffmanCodes.xlsx ExampleDataTemplate.xlsx 
 ```
-
+OUTPUT
 ```python
 If one scheme of happiness fails, human nature turns to another; if the first calculation is wrong, we make a second better: we find comfort somewhere.
 ```
