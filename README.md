@@ -34,6 +34,7 @@ monomer_occurange: {'0': 8, '1': 11, '2': 7, '3': 9, '4': 10, '5': 4, '6': 8, '7
 split into 9's: ['1fbf74bbc', '74a4bdefe', '9a698293b', 'fdb009e7f', 'd164d5e9b', '0a6be14e9', 'fe5f6abcd', '231dc37f3', '4bec0df3c', '5851289b0', '2eb83f81d', 'd119fe0bc', '9a72eddd4', '6e89e4166', '231be0bec', '289f1b96e', 'cf3bdc943', '48d0c']
 ```
 The program then outputs two files, CharactersToHuffmanCodes.xlsx and OutputCodes.xlsx. CharactersToHuffmanCodes.xlsx gives the binary representation of each character in the encoded text. OutputCodes.xlsx gives the text that is encoded in its hexadecimal, compressed representation.
+This hexadecimal representation is what is correlated to monomers in the encoding and the character to binary table (OutputCodes.xlsx) is what is used to decipher the LC/MS data.
 
 ### Mol.E-Decoder Usage
 The second part of Mol.E-Coder is Mol.E-Decoder{Hex/Octal}.py. This program takes in two inputs, the codes output by the Huffman algorithm that are correlated to characters in 
