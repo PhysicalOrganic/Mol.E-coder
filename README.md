@@ -8,13 +8,12 @@ The first part of Mol.E-Coder is Mol.E-Coder{Hex/Octal}.py. This program takes a
 Algorithm. This algorithm works by created a binary tree of the characters in the text being encoded and assigns the letters to nodes based on the frequency of their occurance
 in the text. 
 
-To run this program the program takes two inputs: the first, a text document containing the text to be encoded and the second, the name of the file to be outputted that 
-contains the symbols and their binary representation created by the Huffman algorithm. 
+To run this program the program takes a single input: a text document containing the text to be encoded.
 
 The following is an example input and output for the hexadecimal version:
 
 ```bash
-run Mol.E-CoderHex.py TxtToBeEncoded.txt HuffmanCodes
+run Mol.E-CoderHex.py TxtToBeEncoded.txt
 ```
 
 

@@ -28,7 +28,7 @@ def encode(symb2freq):
 
 def main():
     # get name of csv to read in and write out
-    script, txt_file_name, csv_name = argv
+    script, txt_file_name = argv
 
     letter_frequency = {}
     txt_to_compress = open(txt_file_name, "r", encoding="utf-8-sig")
