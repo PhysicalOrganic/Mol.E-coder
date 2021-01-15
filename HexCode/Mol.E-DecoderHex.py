@@ -7,9 +7,11 @@ from collections import defaultdict
 import xlrd
 import csv
 
+global hex_codes
+global huff_dict
+
 def HexToDecimal (hex_string):
-    # using int ()
-    # convert to hexadecimal string
+    # using int () to convert to hexadecimal string
     n = int(hex_string, 16)
     bStr = ""
     while n > 0:
@@ -19,17 +21,21 @@ def HexToDecimal (hex_string):
     
     return (res)
 
+def MassToHex (sheet):
+    
+
 def MakeBitstring (sheet):
     encoded_bitstring = ""
     hex_padding = "0000000"
-    for i in range(0, sheet.nrows):
-        hex_value = sheet.cell_value(i, 0)
-        print (hex_value)
-        num = HexToDecimal(hex_value)
-        if (str(num) == ""):
-            encoded_bitstring += "00000000"
-        else:
-            encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
+    for i in range(0, sheet.nrows - 1):
+        for j in range (0, sheet)
+            start = sheet.cell_value(i, 0)
+            print (hex_value)
+            num = HexToDecimal(hex_value)
+            if (str(num) == ""):
+                encoded_bitstring += "00000000"
+            else:
+                encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
         
     return (encoded_bitstring)
 
@@ -64,9 +70,6 @@ if __name__ == "__main__":
         
     #### END MONOMER TO HEX CODE READIN ####
     
-    # convert hex codes to binary representation
-    # encoded_bitstring = MakeBitstring(sheet1)
-    
     #### HUFFMAN CODES ####
     # open document that contains the letters and their corresponding huffman codings
     wb = xlrd.open_workbook(huff_codes)
@@ -80,6 +83,16 @@ if __name__ == "__main__":
         huff_dict[str(sheet.cell_value(i, 1))] = sheet.cell_value(i, 0)
         
     #### END HUFFMAN CODE READ IN ####
+        
+    #### READ IN EXCEL LCMS DATA FROM TEMPLATE ####
+    template_workbook = xlrd.open_workbook(LCMS_template)
+    LCMSsheet = template_workbook.sheet_by_index(0)
+
+    # convert hex codes to binary representation
+    encoded_bitstring = MakeBitstring(LCMSsheet)
+
+    
+    #### END LCMS DATA READIN ####
 
     # remove 0 at the end of the bitstring according to how much padding their is
     bit_breakup = encoded_bitstring[:len(encoded_bitstring)- padding]
