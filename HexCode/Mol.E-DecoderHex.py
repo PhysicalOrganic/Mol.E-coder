@@ -50,30 +50,36 @@ def HuffmanDecodeBinaryString (bitstring, huff_dict):
 if __name__ == "__main__":
 
     # get name of csv to read in and write out
-    script, huff_codes, hex_code = argv
+    script, huff_codes, hex_code, LCMS_template = argv
     
+    ### MONOMER TO HEX CODES ####
     # open workbook with hex_codes
     codes_workbook = xlrd.open_workbook(hex_code)
     sheet1 = codes_workbook.sheet_by_index(0)
-    
     sheet1.cell_value(0,0)
+    hex_codes = {}
+    
+    for j in range (1, sheet1.nrows):
+        hex_codes[(sheet1.cell_value(j, 0))] = sheet1.cell_value(j, 1), sheet1.cell_value(j, 2)    
+        
+    #### END MONOMER TO HEX CODE READIN ####
     
     # convert hex codes to binary representation
-    encoded_bitstring = MakeBitstring(sheet1)
+    # encoded_bitstring = MakeBitstring(sheet1)
     
+    #### HUFFMAN CODES ####
     # open document that contains the letters and their corresponding huffman codings
     wb = xlrd.open_workbook(huff_codes)
     sheet = wb.sheet_by_index(0)
-
     sheet.cell_value(0,0)
-
     padding = int(sheet.cell_value(0,1))
 
     # create dictionary of the huffman codes
     huff_dict = {}
-
     for i in range(1, sheet.nrows):
         huff_dict[str(sheet.cell_value(i, 1))] = sheet.cell_value(i, 0)
+        
+    #### END HUFFMAN CODE READ IN ####
 
     # remove 0 at the end of the bitstring according to how much padding their is
     bit_breakup = encoded_bitstring[:len(encoded_bitstring)- padding]

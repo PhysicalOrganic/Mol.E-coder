@@ -34,7 +34,7 @@ def main():
     txt_to_compress = open(txt_file_name, "r", encoding="utf-8-sig")
 
     # create workbook and sheet
-    workbook = xlsxwriter.Workbook("CharactersToHuffmanCodes.xlsx")
+    workbook = xlsxwriter.Workbook("HexData/CharactersToHuffmanCodes.xlsx")
     worksheet = workbook.add_worksheet()
 
     # get letter frequency
@@ -164,7 +164,7 @@ def main():
 
     
     # create workbook and sheet
-    workbook1 = xlsxwriter.Workbook("OutputCodes.xlsx")
+    workbook1 = xlsxwriter.Workbook("HexData/OutputCodes.xlsx")
     worksheet1 = workbook1.add_worksheet()
     
     row = 0
