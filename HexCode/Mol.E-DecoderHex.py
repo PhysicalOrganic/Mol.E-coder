@@ -23,9 +23,9 @@ def HexToDecimal (hex_string):
 
 def MassToHex (value1, value2):
     mass_match = (float(value1) - float(value2))
-    print (value1, value2, mass_match)
     for i in hex_codes.values():
         if ((i[0]+1.5 >= mass_match and i[0]-1.5 <= mass_match) or (i[1]+1.5 >= mass_match and i[1]-1.5 <= mass_match)):
+            print (value1, value2, mass_match)
             return (list(hex_codes.keys())[list(hex_codes.values()).index(i)])
     print (mass_match, "NOT MATCHED")
             
@@ -49,12 +49,12 @@ def MakeBitstring (sheet):
                     if (hex_value == "e" and k == 0):
                         continue
                     else:
-                        num = HexToDecimal(str(hex_value))
-                        if (str(num) == ""):
-                            encoded_bitstring += "0000"
+                        if (hex_value == "0"):
+                            num = "0000"
                         else:
-                            print (hex_value, hex_padding[len(str(num)) - 1:] + str(num))
-                            encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
+                            num = HexToDecimal(str(hex_value))
+                        print (hex_value, hex_padding[len(str(num)) - 1:] + str(num))
+                        encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
                 
     return (encoded_bitstring)
 
