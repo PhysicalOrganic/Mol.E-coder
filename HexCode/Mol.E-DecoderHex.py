@@ -21,22 +21,34 @@ def HexToDecimal (hex_string):
     
     return (res)
 
-def MassToHex (sheet):
+def MassToHex (value1, value2):
+    mass_match = (float(value1) - float(value2))
+    print (mass_match)
+    for i in hex_codes.values():
+        if ((i[0]+2 >= mass_match and i[0]-2 <= mass_match) or (i[1]+2 >= mass_match and i[1]-2 <= mass_match)):
+            print (list(hex_codes.keys())[list(hex_codes.values()).index(i)])
     
 
 def MakeBitstring (sheet):
     encoded_bitstring = ""
     hex_padding = "0000000"
-    for i in range(0, sheet.nrows - 1):
-        for j in range (0, sheet)
-            start = sheet.cell_value(i, 0)
-            print (hex_value)
-            num = HexToDecimal(hex_value)
-            if (str(num) == ""):
-                encoded_bitstring += "00000000"
-            else:
-                encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
-        
+    for i in range (sheet.nrows):
+        for j in range (sheet.ncols):
+            if (len(sheet.cell_value(i,j)) > 3):
+                cells = (sheet.cell_value(i,j).strip(" "))
+                cells = (sheet.cell_value(i,j).split(","))
+                for k in range (0, len(cells)-1):
+                    value1 = cells[k]
+                    value2 = cells[k+1]
+                    hex_value = MassToHex(value1, value2)
+                
+                '''
+                    num = HexToDecimal(hex_value)
+                    if (str(num) == ""):
+                        encoded_bitstring += "00000000"
+                    else:
+                        encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
+                '''
     return (encoded_bitstring)
 
 def HuffmanDecodeBinaryString (bitstring, huff_dict):
@@ -66,7 +78,8 @@ if __name__ == "__main__":
     hex_codes = {}
     
     for j in range (1, sheet1.nrows):
-        hex_codes[(sheet1.cell_value(j, 0))] = sheet1.cell_value(j, 1), sheet1.cell_value(j, 2)    
+        hex_codes[(sheet1.cell_value(j, 0))] = sheet1.cell_value(j, 1), sheet1.cell_value(j, 2)   
+    
         
     #### END MONOMER TO HEX CODE READIN ####
     
@@ -96,7 +109,7 @@ if __name__ == "__main__":
 
     # remove 0 at the end of the bitstring according to how much padding their is
     bit_breakup = encoded_bitstring[:len(encoded_bitstring)- padding]
-    print (bit_breakup)
+    print ("bit_breakup", bit_breakup)
     print ()
     print ()
     
