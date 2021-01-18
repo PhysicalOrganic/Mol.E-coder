@@ -23,15 +23,17 @@ def HexToDecimal (hex_string):
 
 def MassToHex (value1, value2):
     mass_match = (float(value1) - float(value2))
-    print (mass_match)
+    print (value1, value2, mass_match)
     for i in hex_codes.values():
-        if ((i[0]+2 >= mass_match and i[0]-2 <= mass_match) or (i[1]+2 >= mass_match and i[1]-2 <= mass_match)):
-            print (list(hex_codes.keys())[list(hex_codes.values()).index(i)])
+        if ((i[0]+1.5 >= mass_match and i[0]-1.5 <= mass_match) or (i[1]+1.5 >= mass_match and i[1]-1.5 <= mass_match)):
+            return (list(hex_codes.keys())[list(hex_codes.values()).index(i)])
+    print (mass_match, "NOT MATCHED")
+            
     
 
 def MakeBitstring (sheet):
     encoded_bitstring = ""
-    hex_padding = "0000000"
+    hex_padding = "000"
     for i in range (sheet.nrows):
         for j in range (sheet.ncols):
             if (len(sheet.cell_value(i,j)) > 3):
@@ -40,15 +42,29 @@ def MakeBitstring (sheet):
                 for k in range (0, len(cells)-1):
                     value1 = cells[k]
                     value2 = cells[k+1]
-                    hex_value = MassToHex(value1, value2)
-                
-                '''
-                    num = HexToDecimal(hex_value)
-                    if (str(num) == ""):
-                        encoded_bitstring += "00000000"
+                    hex_value = str(MassToHex(value1, value2))[0]
+                    if (hex_value == "e" and k == 0):
+                        continue
                     else:
-                        encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
-                '''
+                        num = HexToDecimal(str(hex_value))
+                        if (str(num) == ""):
+                            encoded_bitstring += "0000"
+                        else:
+                            print (hex_value, hex_padding[len(str(num)) - 1:] + str(num))
+                            encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
+                            
+                            
+                last_value = float(cells[len(cells)-1])
+                print ("last_value", last_value)
+                for i in hex_codes.values():
+                        if (i[1]+1.5 >= last_value and i[1]-1.5 <= last_value):
+                            hex_value = (list(hex_codes.keys())[list(hex_codes.values()).index(i)])
+                num = HexToDecimal(str(hex_value))
+                if (str(num) == ""):
+                    encoded_bitstring += "0000"
+                else:
+                    encoded_bitstring += hex_padding[len(str(num)) - 1:] + str(num)
+                
     return (encoded_bitstring)
 
 def HuffmanDecodeBinaryString (bitstring, huff_dict):
@@ -95,6 +111,8 @@ if __name__ == "__main__":
     for i in range(1, sheet.nrows):
         huff_dict[str(sheet.cell_value(i, 1))] = sheet.cell_value(i, 0)
         
+    print (huff_dict, hex_codes)
+        
     #### END HUFFMAN CODE READ IN ####
         
     #### READ IN EXCEL LCMS DATA FROM TEMPLATE ####
@@ -103,9 +121,9 @@ if __name__ == "__main__":
 
     # convert hex codes to binary representation
     encoded_bitstring = MakeBitstring(LCMSsheet)
+    #### END LCMS DATA READIN ####
 
     
-    #### END LCMS DATA READIN ####
 
     # remove 0 at the end of the bitstring according to how much padding their is
     bit_breakup = encoded_bitstring[:len(encoded_bitstring)- padding]
