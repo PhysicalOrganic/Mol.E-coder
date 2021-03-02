@@ -2,7 +2,6 @@
 
 from sys import argv
 import xlrd
-
 global hex_codes
 global huff_dict
 
