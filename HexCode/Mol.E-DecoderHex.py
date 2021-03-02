@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
-import collections
 from sys import argv
-from heapq import heappush, heappop, heapify
-from collections import defaultdict
 import xlrd
-import csv
 
 global hex_codes
 global huff_dict

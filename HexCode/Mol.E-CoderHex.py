@@ -6,9 +6,8 @@ the second is the name of the output file!
 '''
 from sys import argv
 from heapq import heappush, heappop, heapify
-from collections import defaultdict
 import xlsxwriter
-import csv
+
 
 def encode(symb2freq):
     """Huffman encode the given dict mapping symbols to weights"""
