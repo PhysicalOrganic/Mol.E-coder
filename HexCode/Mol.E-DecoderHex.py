@@ -112,7 +112,7 @@ def HuffmanDecodeBinaryString(bitstring, huff_dict):
     Parameters
     ----------
     bitstring : string
-        0s and 1s coverted from hexadecimal.
+        0s and 1s converted from hexadecimal.
     huff_dict : dictionary
         Codes generated based on frequency of characters used.
 

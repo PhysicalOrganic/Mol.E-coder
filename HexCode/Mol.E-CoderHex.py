@@ -1,6 +1,10 @@
 #!/usr/bin/env
 """
-Takes a txt file, performs a huffman compression to output binary codes that are stored in CharactersToHuffmanCodes.xlsx.This binary is the converted to its hexadecimal equivalent and printed out in the terminal as well as being written to OutputCodes.xlsx as snippets that can be assigned to monomers to storage in oligomers.
+Takes a txt file, performs a huffman compression to output binary codes that
+are stored in CharactersToHuffmanCodes.xlsx.This binary is the converted to 
+its hexadecimal equivalent and printed out in the terminal as well as being
+written to OutputCodes.xlsx as snippets that can be assigned to monomers
+to storage in oligomers.
 """
 from sys import argv
 from heapq import heappush, heappop, heapify
