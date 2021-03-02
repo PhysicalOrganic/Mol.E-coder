@@ -1,8 +1,6 @@
 #!/usr/bin/env
-
 """
-Script takes TWO arguments: the FIRST is the txttobeencoded in a text doc and
-the second is the name of the output file!
+Takes a txt file, performs a huffman compression to output binary codes that are stored in CharactersToHuffmanCodes.xlsx.This binary is the converted to its hexadecimal equivalent and printed out in the terminal as well as being written to OutputCodes.xlsx as snippets that can be assigned to monomers to storage in oligomers.
 """
 from sys import argv
 from heapq import heappush, heappop, heapify
@@ -10,7 +8,7 @@ import xlsxwriter
 
 
 def encode(symb2freq):
-    """Huffman encode the given dict mapping symbols to weights"""
+    """Takes in dictionary of letter frequencies and returns a list of huffman codes."""
     heap = [[wt, [sym, ""]] for sym, wt in symb2freq.items()]
     heapify(heap)
 

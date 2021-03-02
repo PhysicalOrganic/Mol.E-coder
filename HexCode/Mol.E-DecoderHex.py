@@ -7,7 +7,20 @@ global huff_dict
 
 
 def HexToDecimal(hex_string):
-    # using int () to convert to hexadecimal string
+    """
+    Convert Hexadecimal numbers to Binary.
+    
+    Parameters
+    ----------
+    hex_string : string
+        Takes in formatted hexstring derived from mass data.
+
+    Returns
+    -------
+    res : string
+        returns the resulting binary string.
+
+    """
     n = int(hex_string, 16)
     bStr = ""
     while n > 0:
@@ -19,6 +32,23 @@ def HexToDecimal(hex_string):
 
 
 def MassToHex(value1, value2):
+    """
+    Match LC/MS Masses to Monomers
+    
+    Parameters
+    ----------
+    value1 : int
+        Parent mass.
+    value2 : int
+        Mass after loss of one unknown monomer.
+
+    Returns
+    -------
+    hexadecimal character from list : string
+        Gets the difference between value1 and value2 to see which monomer was
+        lost, then returns monomer that matches this mass difference.
+
+    """
     mass_match = float(value1) - float(value2)
     for i in hex_codes.values():
         if (i[0] + 1.5 >= mass_match and i[0] - 1.5 <= mass_match) or (
@@ -30,6 +60,21 @@ def MassToHex(value1, value2):
 
 
 def MakeBitstring(sheet):
+    """
+    Takes in excel sheet with templated LC/MS data and converts this first to
+    it's hexadecimal format, and then to binary
+
+    Parameters
+    ----------
+    sheet : xlsx reader object
+        Templated LC/MS data in an excel sheet.
+
+    Returns
+    -------
+    encoded_bitstring : string
+        binary digits (0s and 1s) in string format.
+
+    """
     encoded_bitstring = ""
     hex_padding = "000"
     for i in range(sheet.nrows):
@@ -44,6 +89,7 @@ def MakeBitstring(sheet):
                     else:
                         value2 = cells[k + 1]
                     hex_value = str(MassToHex(value1, value2))[0]
+                    # skipping over starting index monomer!
                     if hex_value == "e" and k == 0:
                         continue
                     else:
@@ -58,6 +104,24 @@ def MakeBitstring(sheet):
 
 
 def HuffmanDecodeBinaryString(bitstring, huff_dict):
+    """
+    Takes in bitstring of 0s and 1s and breaks it back into letters using
+    Huffman dictionary
+
+    Parameters
+    ----------
+    bitstring : string
+        0s and 1s coverted from hexadecimal.
+    huff_dict : dictionary
+        Codes generated based on frequency of characters used.
+
+    Returns
+    -------
+    decoded_string : string
+        bitstring deciphered using Huffman dictionary back to original text
+        document.
+
+    """
     # break up bitstring into into huffman codes
     decoded_string = ""
     bit_breakup = bitstring
