@@ -12,7 +12,7 @@ import csv
 
 
 def encode(symb2freq):
-    """Huffman encode the given dict mapping symbols to weights"""
+    """Takes in dictionary of letter frequencies and returns a list of huffman codes."""
     heap = [[wt, [sym, ""]] for sym, wt in symb2freq.items()]
     heapify(heap)
     while len(heap) > 1:

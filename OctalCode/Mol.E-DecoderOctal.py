@@ -9,6 +9,20 @@ import csv
 
 
 def OctalToDecimal(n):
+    """
+    Converts decimal number n to Octal equivalent
+
+    Parameters
+    ----------
+    n : int
+        decimal number to be converted to octal.
+
+    Returns
+    -------
+    dec_value : int
+        octal equivalent of original decimal number.
+
+    """
     num = n
     dec_value = 0
 
