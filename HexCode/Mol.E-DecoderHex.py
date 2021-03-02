@@ -2,6 +2,7 @@
 
 from sys import argv
 import xlrd
+
 global hex_codes
 global huff_dict
 
@@ -9,7 +10,7 @@ global huff_dict
 def HexToDecimal(hex_string):
     """
     Convert Hexadecimal numbers to Binary.
-    
+
     Parameters
     ----------
     hex_string : string
@@ -34,7 +35,7 @@ def HexToDecimal(hex_string):
 def MassToHex(value1, value2):
     """
     Match LC/MS Masses to Monomers
-    
+
     Parameters
     ----------
     value1 : int
